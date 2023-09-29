@@ -1,0 +1,13 @@
+#!/bin/bash
+
+src_dir=$(pwd)
+dest_dir=$(dirname $src_dir)
+
+for file in *.html; do
+    src_file="$src_dir/$file"
+    dest_file="$dest_dir/$file"
+    
+    if [ ! -e "$dest_file" ] || [ "$src_file" -nt "$dest_file" ]; then
+        cp "$src_file" "$dest_file"
+    fi
+done
